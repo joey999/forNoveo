@@ -2,7 +2,6 @@ const WebdriverSingleton =  require('../util/driver');
 const conf = require('../util/hostConfig');
 
 
-
 class Base {
     constructor() {
         let webdriverConstructor = WebdriverSingleton.instance;
@@ -40,11 +39,5 @@ class Base {
         await this.driver.wait(this.until.urlIs(expectUrl), this.timeout)
     }
 }
-
-// afterEach(async () => {
-//     if (Base.instance) {
-//         Base.instance.quitBrowser();
-//     }
-// });
 
 module.exports = Base;

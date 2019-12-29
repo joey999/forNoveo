@@ -1,6 +1,5 @@
 const { expect } = require('chai');
 const screenshotWithCircle = require('../util/screenFunc');
-const conf = require('../util/hostConfig');
 const Base = require('./BasePage');
 
 

@@ -1,6 +1,5 @@
 const {expect} = require('chai');
 const screenshotWithCircle = require('../util/screenFunc');
-const conf = require('../util/hostConfig');
 const Base = require('./BasePage');
 const logger = require('../util/logger');
 
@@ -41,22 +40,6 @@ class Vacancies extends Base {
 
         await screenshotWithCircle(this.driver, `Проверка тайтла страницы 'Вакансии'`, elTitle);
         expect(expectTitle).to.equal(await elTitle.getText(), 'Неверный тайтл!');
-    }
-
-    async clickButton(buttonName) {
-        const buttonEl = await this.elementLocated(this._locators('button', buttonName));
-
-        await screenshotWithCircle(this.driver, `Нажимаем по кнопке '${buttonName}'`, buttonEl);
-        await buttonEl.click();
-    }
-
-    async checkHeader(expectHeader) {
-        const locator = "//h1[contains(@class, 'header')]";
-        const headerEl = await this.elementLocated(locator);
-
-        await screenshotWithCircle(this.driver, 'Проверка хидера', headerEl);
-
-        return expect(expectHeader).to.equal(await headerEl.getText(), 'НЕВЕРНЫЙ ТАЙТЛ!!! ');
     }
 }
 

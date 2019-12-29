@@ -6,7 +6,6 @@ require('../helpers/hooks');
 describe('Check lending ', () => {
         describe('Open https://noveogroup.ru/', () => {
             it("and check header text 'Noveo' ", async () => {
-
                 const startPage = new Pages.Start();
                 await startPage.page();
 
@@ -43,8 +42,6 @@ describe('Check lending ', () => {
                     'Преподаватель английского языка',
                     'Tестировщик ПО / QA engineer'
                 ]);
-
-                // await browser.sleep(100000);
             });
         });
     },
