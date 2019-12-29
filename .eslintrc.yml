@@ -1,0 +1,33 @@
+plugins:
+  - babel
+env:
+  "es6": true
+  "node": true
+  "mocha": true
+parser: babel-eslint
+extends:
+  ['airbnb-base']
+
+
+globals:
+  allure: true
+  document: true
+  describe: true
+  beforeEach: true
+
+rules:
+  func-style: ["error", "declaration"]
+  quotes: ["error", "single", { "avoidEscape": true }]
+  no-confusing-arrow: ["error", {"allowParens": true}]
+  new-cap: ["error", { "properties": false }]
+  no-underscore-dangle: ["error", { "allow": ["screen_", "foo_", "_bar"], allowAfterThis: true }]
+  "max-classes-per-file": ["error", 2]
+  no-plusplus: ["error", { "allowForLoopAfterthoughts": true }]
+  prefer-arrow-callback:
+    [ "error", { "allowNamedFunctions": false, "allowUnboundThis": true} ]
+  no-console: 0
+  "indent": [
+    'error',
+    4,
+    {"SwitchCase": 1}
+  ]

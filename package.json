@@ -2,13 +2,15 @@
   "name": "fornoveo",
   "version": "1.0.0",
   "description": "Test project for Noveo",
-  "main": "util/logger.js",
+  "main": "src/util/logger.js",
   "scripts": {
-    "build": "NODE_ENV=production babel",
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build",
     "selenium-install": "selenium-standalone install",
     "pretest": "rm -rf allure-results",
-    "test": "rm -rf allure-results && multi='spec=- mocha-allure-reporter=-' mocha ./test/start.js",
+    "test": "rm -rf allure-results && multi='spec=- mocha-allure-reporter=-' mocha src/test/start.js --opts mocha.opts",
+    "runner": "multi='spec=- mocha-allure-reporter=-' node src/runner.js",
     "selenium": "selenium-standalone start",
     "report": "allure generate allure-results --clean -o allure-report",
     "report-open": "allure open allure-report"
@@ -29,6 +31,17 @@
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.7",
-    "@babel/preset-env": "^7.7.7"
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-stage-2": "^7.0.0",
+    "@babel/preset-stage-3": "^7.0.0",
+    "@babel/runtime": "^7.7.7",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.19.1"
   }
 }
