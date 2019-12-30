@@ -9,7 +9,7 @@ Example of my test-framework code for Noveo group.
 after tests will generate allure report and open automatically in your browser
 
 For run tests without starting selenium server you must use command `npm run test:mocha` 
-before that change the address of selenium grid in hostConfig.js
+before that change the address of selenium grid in hostConfig.js `selenium: 'http://localhost:4444/wd/hub'`
 
 For run tests in programmatically style use `npm run runner`
 
@@ -32,10 +32,10 @@ For run tests in programmatically style use `npm run runner`
     * **randomFuncs.js** - functions for generate random data 
     * **screenFunc.js** - function for write circle around webelement
     
-* **hostConfig** - configuration webdriver
-* **runner.js** - file for runnins mocha in programmatically-style
-* **mocha.opts** - mocha configuration [Mocha-opts]
-* **configForRunner.js** - config for runner.js 
+**hostConfig** - configuration webdriver
+**runner.js** - file for runnins mocha in programmatically-style
+**mocha.opts** - mocha configuration [Mocha-opts]
+**configForRunner.js** - config for runner.js 
 
 [Mocha]: http://mochajs.org
 [Mocha-opts]: https://mochajs.org/index.html#mochaopts
