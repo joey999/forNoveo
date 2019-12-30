@@ -1,7 +1,7 @@
 const Singleton =  require('../util/driver');
 const { beforeEach, afterEach } = require('mocha');
 const conf = require('../util/hostConfig');
-let stepIncrementer = require('../helpers/stepIncrementer');
+let stepIncrementer = require('./stepIncrementer');
 
 
 beforeEach('create webdriver instance', async function before() {
