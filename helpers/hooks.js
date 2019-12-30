@@ -1,6 +1,6 @@
 const Singleton =  require('../util/driver');
 const { beforeEach, afterEach } = require('mocha');
-const conf = require('../util/hostConfig');
+const conf = require('../hostConfig');
 let stepIncrementer = require('./stepIncrementer');
 
 

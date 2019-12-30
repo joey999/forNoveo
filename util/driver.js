@@ -1,6 +1,6 @@
 const webdriver = require('selenium-webdriver');
 const { By, until } = require('selenium-webdriver');
-const conf = require('./hostConfig');
+const conf = require('../hostConfig');
 
 
 let singleton = Symbol();

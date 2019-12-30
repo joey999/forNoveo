@@ -1,5 +1,5 @@
 const Mocha = require('mocha');
-const config = require('./config');
+const config = require('./configForRunner');
 
 
 // eslint-disable-next-line func-style

@@ -1,5 +1,5 @@
 const WebdriverSingleton =  require('../util/driver');
-const conf = require('../util/hostConfig');
+const conf = require('../hostConfig');
 
 
 class Base {
