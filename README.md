@@ -32,10 +32,10 @@ For run tests in programmatically style use `npm run runner`
     * **randomFuncs.js** - functions for generate random data 
     * **screenFunc.js** - function for write circle around webelement
     
-**hostConfig** - configuration webdriver
-**runner.js** - file for runnins mocha in programmatically-style
-**mocha.opts** - mocha configuration [Mocha-opts]
-**configForRunner.js** - config for runner.js 
+* **hostConfig.js** - configuration webdriver
+* **runner.js** - file for runnins mocha in programmatically-style
+* **mocha.opts** - mocha configuration [Mocha-opts]
+* **configForRunner.js** - config for runner.js 
 
 [Mocha]: http://mochajs.org
 [Mocha-opts]: https://mochajs.org/index.html#mochaopts
