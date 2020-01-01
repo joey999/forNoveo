@@ -1,4 +1,4 @@
-function makeRandomStringCyr(length) {
+exports.makeRandomStringCyr = function makeRandomStringCyr(length) {
     let result = '';
     const characters = 'абвгдежзийклмнопрстуфхцчшщыэюя';
     const charactersLength = characters.length;
@@ -9,9 +9,9 @@ function makeRandomStringCyr(length) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-}
+};
 
-function makeRandomStringLat(length) {
+exports.makeRandomStringLat = function makeRandomStringLat(length) {
     let result = '';
     const characters = 'abcdefghijklmnopqrstuvwxyz';
     const charactersLength = characters.length;
@@ -19,9 +19,9 @@ function makeRandomStringLat(length) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-}
+};
 
-function makeRandomNumber(length) {
+exports.makeRandomNumber = function makeRandomNumber(length) {
     function randomNum(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
     }
@@ -32,14 +32,8 @@ function makeRandomNumber(length) {
     }
 
     return randomInt;
-}
+};
 
-
-function getRandomInt(max) {
+exports.getRandomInt = function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
-}
-
-
-module.exports = {
-    makeRandomNumber, makeRandomStringLat, makeRandomStringCyr, getRandomInt,
 };

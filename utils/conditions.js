@@ -9,12 +9,12 @@ exports.elementTextNotEmpty = function elementTextNotEmpty(element) {
     return new WebElementCondition('until element text is',
         () => element.getText().then((t) => (t !== '' ? element : null)));
 };
-exports.elementInputNotEmpty = function elementTextNotEmpty(element) {
+exports.elementInputNotEmpty = function elementInputNotEmpty(element) {
     return new WebElementCondition('until element text is',
         () => element.getAttribute('value').then((t) => (t !== '' ? element : null)));
 };
 
-exports.elementClickUntilLocated = function elementTextNotEmpty(element, locator) {
+exports.elementClickUntilLocated = function elementClickUntilLocated(element, locator) {
     return new WebElementCondition('click until element located', () => element.click().then(() => {
         element.findElement(locator)
             .then(() => true)

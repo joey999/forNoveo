@@ -14,7 +14,9 @@ globals:
 
 rules:
   func-style: ["error", "declaration"]
-  quotes: ["error", "single", { "avoidEscape": true }]
+  func-names: ["error", "as-needed"]
+  quotes: ["error", "single", { "allowTemplateLiterals": true }]
+  no-restricted-syntax: "off"
   no-confusing-arrow: ["error", {"allowParens": true}]
   new-cap: ["error", { "properties": false }]
   no-underscore-dangle: ["error", { "allow": ["screen_", "foo_", "_bar"], allowAfterThis: true }]

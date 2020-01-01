@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const screenshotWithCircle = require('../util/screenFunc');
+const { screenshotWithCircle } = require('../utils');
 const Base = require('./BasePage');
 
 
@@ -34,7 +34,7 @@ class Start extends Base {
     }
 
     async checkHeader(expectHeader) {
-        const locator = "//h1[contains(@class, 'header')]";
+        const locator = `//h1[contains(@class, 'header')]`;
         const headerEl = await this.elementLocated(locator);
 
         await screenshotWithCircle(this.driver, 'Проверка хидера', headerEl);

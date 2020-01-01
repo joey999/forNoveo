@@ -1,14 +1,14 @@
-const Singleton =  require('../util/driver');
 const { beforeEach, afterEach } = require('mocha');
+const Singleton = require('./driver');
 const conf = require('../hostConfig');
-let stepIncrementer = require('./stepIncrementer');
+const stepIncrementer = require('./stepIncrementer');
 
 
-beforeEach('create webdriver instance', async function before() {
-    let driverConstructor = Singleton.instance;
+beforeEach('create webdriver instance', async () => {
+    const driverConstructor = Singleton.instance;
     await driverConstructor.createDriver();
 
-    let inc = stepIncrementer.getInstance();
+    const inc = stepIncrementer.getInstance();
     inc.counterReset();
 
     allure.addEnvironment('BROWSER', `${conf.browser}`);
@@ -21,7 +21,6 @@ afterEach('take screenshot on failure', async function after() {
         // console.log('message after test!');
     }
 
-    let dr = Singleton.instance;
+    const dr = Singleton.instance;
     await dr.quitDriver();
-
 });

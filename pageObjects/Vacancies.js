@@ -1,7 +1,6 @@
-const {expect} = require('chai');
-const screenshotWithCircle = require('../util/screenFunc');
+const { expect } = require('chai');
 const Base = require('./BasePage');
-const logger = require('../util/logger');
+const { logger, screenshotWithCircle, arrayDeepResolver } = require('../utils');
 
 
 class locators {
@@ -10,28 +9,28 @@ class locators {
     }
 
     static get title() {
-        return `//*[contains(@class, 'title_page')]`
+        return `//*[contains(@class, 'title_page')]`;
     }
 }
 
 class Vacancies extends Base {
-
     async checkVacancies(arrVacancies) {
         const elsVac = await this.elementsLocated(locators.vacancies);
         logger.log(`Количество вакансий на странице: '${elsVac.length}'; Ожидаем: '${arrVacancies.length}'`);
         expect(elsVac.length).to.equal(arrVacancies.length);
 
-        let text_of_elements = [];
-        for (let el of elsVac) {
-            text_of_elements.push([await el.getText(), el])
-        }
+        const textOfElements = await arrayDeepResolver(
+            elsVac.map((x) => [x.getText(), x]),
+        );
 
-        for (let expectVacancy of arrVacancies) {
-            let findedVacancy = text_of_elements.find(x => x.includes(expectVacancy));
-            expect(findedVacancy).to.not.equal(undefined, `'${expectVacancy}' на странице не найдено!`);
+        for (const expectVacancy of arrVacancies) {
+            const foundVacancy = textOfElements.find((x) => x.includes(expectVacancy));
+            expect(foundVacancy).to.not.equal(undefined, `'${expectVacancy}' на странице не найдено!`);
 
-            await this.scrollToElement(findedVacancy[1]);
-            await screenshotWithCircle(this.driver, `Проверка вакансии '${expectVacancy}' на странице`, findedVacancy[1]);
+            // eslint-disable-next-line no-await-in-loop
+            await this.scrollToElement(foundVacancy[1]);
+            // eslint-disable-next-line no-await-in-loop
+            await screenshotWithCircle(this.driver, `Проверка вакансии '${expectVacancy}' на странице`, foundVacancy[1]);
         }
     }
 

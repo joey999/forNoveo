@@ -1,10 +1,10 @@
-const WebdriverSingleton =  require('../util/driver');
+const WebdriverSingleton = require('../helpers/driver');
 const conf = require('../hostConfig');
 
 
 class Base {
     constructor() {
-        let webdriverConstructor = WebdriverSingleton.instance;
+        const webdriverConstructor = WebdriverSingleton.instance;
 
         this.driver = webdriverConstructor.getDriver();
 
@@ -35,8 +35,8 @@ class Base {
         await this.driver.executeScript('window.scrollBy(0, -100)');
     }
 
-    async checkRedirect(expectUrl){
-        await this.driver.wait(this.until.urlIs(expectUrl), this.timeout)
+    async checkRedirect(expectUrl) {
+        await this.driver.wait(this.until.urlIs(expectUrl), this.timeout);
     }
 }
 

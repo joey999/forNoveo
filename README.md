@@ -20,7 +20,7 @@ For run tests in programmatically style use `npm run runner`
     * **stepIncrementer.js** – base class from which all pages are inherited
 * **pageObjects/** – directory with page objects.
     * **BasePage.js** – base class from which all pages are inherited
-    * **Pages.js** – combines all pages
+    * **index.js** – combines all pages
     * **Start.js** – class with actions for main page https://noveogroup.ru/
     * **Vacancies.js** – class with actions for main page https://job.noveogroup.ru/
 * **test/** – test files. Our setup uses [Mocha].

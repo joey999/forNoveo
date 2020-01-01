@@ -13,18 +13,16 @@ const asyncForEach = async (arr, cb) => {
 (async () => {
     // Iterate over all browsers.
     await asyncForEach(config.browsers, async (browser) => {
-
         // Iterate over all tests.
-        await asyncForEach(config.tests, async testCase => {
-
+        await asyncForEach(config.tests, async (testCase) => {
             // Create our Mocha instance
-            let mocha = new Mocha({
+            const mocha = new Mocha({
                 timeout: testCase.timeout,
-                reporter: "mocha-multi"
+                reporter: 'mocha-multi',
             });
 
             return new Promise((resolve, reject) => {
-                mocha.suite.on('require', function (global, file) {
+                mocha.suite.on('require', (global, file) => {
                     delete require.cache[file];
                 });
 
@@ -35,7 +33,7 @@ const asyncForEach = async (arr, cb) => {
 
                 mocha.run()
                     // Callback whenever a test fails.
-                    .on('fail', test => reject(new Error(`Selenium test (${test.title}) failed.`)))
+                    .on('fail', (test) => reject(new Error(`Selenium test (${test.title}) failed.`)))
                     // When the test is over the Promise can be resolved.
                     .on('end', () => resolve());
             });
