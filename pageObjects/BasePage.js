@@ -1,4 +1,5 @@
 const WebdriverSingleton = require('../helpers/driver');
+const { screenshotWithCircle } = require('../utils');
 const conf = require('../hostConfig');
 
 
@@ -20,6 +21,7 @@ class Base {
 
     async page(pageUrl = conf.host) {
         await this.driver.get(pageUrl);
+        await screenshotWithCircle(this.driver, `Страница ${pageUrl}`);
     }
 
     async elementLocated(locator, timeout = this.timeout) {
