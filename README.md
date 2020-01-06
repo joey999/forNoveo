@@ -17,7 +17,7 @@ For run tests in programmatically style use `npm run runner`
 
 * **helpers/** – directory with helpers for working test-framework .
     * **hooks.js** – base class from which all pages are inherited
-    * **stepIncrementer.js** – base class from which all pages are inherited
+    * **driver.js** - driver singleton class from library [selenium-webdriver]
 * **pageObjects/** – directory with page objects.
     * **BasePage.js** – base class from which all pages are inherited
     * **index.js** – combines all pages
@@ -27,10 +27,14 @@ For run tests in programmatically style use `npm run runner`
     * **start.js** – tests-cases example.
 * **util/** - some utils .
     * **conditions.js** – custom conditions
-    * **driver.js** - driver singleton class from library [selenium-webdriver]
+    * **decoration.js** – function for apply decorators
+    * **decorators.js** – functions decorators
+    * **index.js** – combine all utils
     * **logger.js** - logger singleton class
-    * **randomFuncs.js** - functions for generate random data 
+    * **randomFuncs.js** - functions for generate random data
+    * **resolvers.js** - functions for resolve promise objects
     * **screenFunc.js** - function for write circle around webelement
+    * **stepIncrementer.js** – base class from which all pages are inherited
     
 * **hostConfig.js** - configuration webdriver
 * **runner.js** - file for runnins mocha in programmatically-style

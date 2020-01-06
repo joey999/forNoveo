@@ -8,11 +8,12 @@ module.exports = function step(target, name, descriptor, stepDescription) {
         descriptor.value = async function (...args) {
             const stepNumber = stepIncrementer.incrementStep();
 
-            logger.log(`Step ${stepNumber}: ${name}`);
-            logger.log(`Arguments: ${JSON.stringify(args)}`);
+            const stepName = `Step ${stepNumber} (${name}): ${stepDescription(args !== [] ? args[0] : undefined)}`;
+            logger.log(stepName);
+            logger.log(`Arguments: ${args.length === 1 && Array.isArray(args[0]) ? JSON.stringify(args[0], null, ' ') : JSON.stringify(args)}`);
             try {
 
-                return await allure.createStep(`Step ${stepNumber} (${name}): ${stepDescription(args !== [] ? args[0] : undefined)}`, async () => {
+                return await allure.createStep(stepName, async () => {
 
                     const originalApplied = await original.apply(this, args)
                         .catch(async e => {
@@ -30,7 +31,7 @@ module.exports = function step(target, name, descriptor, stepDescription) {
                 logger.log(`Error: ${e}`);
                 throw e;
             }
-        }
+        };
     }
     return descriptor;
 };
