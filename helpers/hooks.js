@@ -1,26 +1,27 @@
 const { beforeEach, afterEach } = require('mocha');
+const { screenshotWithCircle, logger } = require('../utils');
 const Singleton = require('./driver');
 const conf = require('../hostConfig');
-const stepIncrementer = require('./stepIncrementer');
+const stepIncrementer = require('../utils/stepIncrementer');
 
 
-beforeEach('create webdriver instance', async () => {
+beforeEach('create webdriver instance', async function before() {
     const driverConstructor = Singleton.instance;
     await driverConstructor.createDriver();
 
-    const inc = stepIncrementer.getInstance();
-    inc.counterReset();
+    stepIncrementer.counterReset();
 
     allure.addEnvironment('BROWSER', `${conf.browser}`);
     allure.addEnvironment('ENV', `${conf.host}`);
 });
 
 afterEach('take screenshot on failure', async function after() {
-    if (this.currentTest.state === 'passed') {
-        // await screenshot(browser, 'СКРИНШОТ ОШИБКИ!');
-        // console.log('message after test!');
+    const driver = Singleton.instance;
+    if (this.currentTest.state !== 'passed') {
+        await screenshotWithCircle(await driver.getDriver(), 'СКРИНШОТ ОШИБКИ!');
+        await allure.createAttachment(`Logs ERROR.`, (logger.logs.map(x => `${x.timestamp}: ${x.message}`)).join('\n'));
+        logger.clear();
     }
 
-    const dr = Singleton.instance;
-    await dr.quitDriver();
+    await driver.quitDriver();
 });

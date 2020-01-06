@@ -1,0 +1,19 @@
+const {step} = require('.');
+
+exports.decorationClass = function decorationClass(cls, steps) {
+    Object.getOwnPropertyNames(cls.prototype).map(prop => {
+        if (!['constructor', '_locators'].includes(prop)) {
+            let descriptor = Object.getOwnPropertyDescriptor(cls.prototype, prop);
+            descriptor = step(cls.prototype, prop, descriptor, steps[prop]);
+            Object.defineProperty(cls.prototype, prop, descriptor);
+        }
+    });
+    return cls;
+};
+
+exports.decorationMethod = function decorationMethod(cls, prop, steps) {
+    let descriptor = Object.getOwnPropertyDescriptor(cls.prototype, prop);
+    descriptor = step(cls.prototype, prop, descriptor, steps[prop]);
+    Object.defineProperty(cls.prototype, prop, descriptor);
+    return cls;
+};

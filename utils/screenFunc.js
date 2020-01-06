@@ -1,6 +1,5 @@
 /* eslint-disable */
 const logger = require('./logger');
-const stepIncrementer = require('../helpers/stepIncrementer');
 
 
 /**
@@ -11,16 +10,9 @@ const stepIncrementer = require('../helpers/stepIncrementer');
  * @private
  */
 async function screen_(name = 'забыл указать имя', browser) {
-    const stepNumber = stepIncrementer.getInstance();
-    const step = allure.createStep(`Step ${stepNumber.incrementStep()}: ${name}`, async () => {
-        await browser.takeScreenshot().then(async (png) => {
-            await allure.createAttachment(`Screenshot: ${name}`, () => new Buffer.from(png, 'base64'), 'image/png')();
-        });
-
-        await allure.createAttachment('Logs', JSON.stringify(logger.logs, null, ' '));
-        logger.clear();
+    await browser.takeScreenshot().then(async (png) => {
+        await allure.createAttachment(`Screenshot: ${name}`, () => new Buffer.from(png, 'base64'), 'image/png')();
     });
-    await step();
 }
 
 /**

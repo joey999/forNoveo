@@ -1,5 +1,5 @@
 const WebdriverSingleton = require('../helpers/driver');
-const { screenshotWithCircle } = require('../utils');
+const { screenshotWithCircle, decoration } = require('../utils');
 const conf = require('../hostConfig');
 
 
@@ -39,7 +39,20 @@ class Base {
 
     async checkRedirect(expectUrl) {
         await this.driver.wait(this.until.urlIs(expectUrl), this.timeout);
+        await screenshotWithCircle(this.driver, `Проверка редиректа на страницу ${expectUrl}`)
     }
 }
+
+const steps = {
+    page: (url) => {
+        return `Страница ${url === undefined ? conf.host : url}`
+    },
+    checkRedirect: (expectUrl) => {
+        return `Проверка редиректа. Ожидаем: ${expectUrl}`
+    }
+};
+
+decoration.decorationMethod(Base, 'page', steps);
+decoration.decorationMethod(Base, 'checkRedirect', steps);
 
 module.exports = Base;

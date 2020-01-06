@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const Base = require('./BasePage');
-const { logger, screenshotWithCircle, arrayDeepResolver } = require('../utils');
+const { logger, screenshotWithCircle, arrayDeepResolver, decoration} = require('../utils');
 
 
 class locators {
@@ -41,5 +41,15 @@ class Vacancies extends Base {
         expect(expectTitle).to.equal(await elTitle.getText(), 'Неверный тайтл!');
     }
 }
+const steps = {
+    checkVacancies: () => {
+        return `Проверка списка вакансий`
+    },
+    checkTitle: (title) => {
+        return `Проверка тайтла страницы. Ожидаем: '${title}'`
+    }
+};
+
+decoration.decorationClass(Vacancies, steps);
 
 module.exports = Vacancies;
