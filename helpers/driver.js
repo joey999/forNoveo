@@ -14,7 +14,6 @@ class WebdriverSingleton {
             return new Error('Instantiation failed: use Singleton.getInstance() instead of new.');
         }
 
-        // код конструктора
         this.driver = null;
         this.By = By;
         this.until = until;

@@ -5,12 +5,12 @@ require('../helpers/hooks');
 
 describe('Check lending ', () => {
     describe('Open https://noveogroup.ru/', () => {
-        // it(`and check header text 'Noveo' `, async () => {
-        //     const startPage = new Pages.Start();
-        //     await startPage.page();
-        //
-        //     await startPage.checkHeader('Noveo');
-        // });
+        it(`and check header text 'Noveo' `, async () => {
+            const startPage = new Pages.Start();
+            await startPage.page();
+
+            await startPage.checkHeader('Noveo');
+        });
         it(`and scroll to 'Горячие вакансии' and click to button 'Все вакансии' and check redirect`, async () => {
             const startPage = new Pages.Start();
             await startPage.page();
@@ -44,15 +44,3 @@ describe('Check lending ', () => {
         });
     });
 });
-
-class o {
-    b(){
-        return console.log('pisl')
-    }
-}
-Object.defineProperty(o, "b", {value : function(){ return console.log('asdf'); },
-    writable : true,
-    enumerable : true,
-    configurable : true});
-
-

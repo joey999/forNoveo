@@ -45,6 +45,9 @@ const steps = {
     },
     scrollToTitle: (title) => {
         return `Скролл к тайтлу '${title}'`
+    },
+    checkHeader: (header) => {
+        return `Проверка хидера. Ожидаем '${header}'`
     }
 };
 
