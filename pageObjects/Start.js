@@ -3,15 +3,13 @@ const { screenshotWithCircle, decoration } = require('../utils');
 const Base = require('./BasePage');
 
 
-class locators {
-    static title(titleName) {
-        return `//div[contains(@class, 'index')]//*[contains(@class, 'title')][text()='${titleName}']`;
-    }
+const locators = {
+    title: (titleName) => `//div[contains(@class, 'index')]//*[contains(@class, 'title')][text()='${titleName}']`,
 
-    static button(buttonName) {
-        return `//div[contains(@class, 'index')]//*[contains(@class, 'button')][text()='${buttonName}']`;
-    }
-}
+    button: (buttonName) => `//div[contains(@class, 'index')]//*[contains(@class, 'button')][text()='${buttonName}']`,
+
+    header: `//h1[contains(@class, 'header')]`,
+};
 
 class Start extends Base {
     async scrollToTitle(title) {
@@ -30,8 +28,7 @@ class Start extends Base {
     }
 
     async checkHeader(expectHeader) {
-        const locator = `//h1[contains(@class, 'header')]`;
-        const headerEl = await this.elementLocated(locator);
+        const headerEl = await this.elementLocated(locators.header);
 
         await screenshotWithCircle(this.driver, 'Проверка хидера', headerEl);
 

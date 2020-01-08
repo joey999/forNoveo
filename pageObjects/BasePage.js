@@ -8,6 +8,7 @@ class Base {
         const webdriverConstructor = WebdriverSingleton.instance;
 
         this.driver = webdriverConstructor.getDriver();
+        this.driver.manage().window().maximize();
 
         this.by = webdriverConstructor.By;
         this.until = webdriverConstructor.until;
