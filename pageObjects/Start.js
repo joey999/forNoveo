@@ -17,13 +17,13 @@ class Start extends Base {
     async scrollToTitle(title) {
         const titleEl = await this.elementLocated(locators.title(title));
         await this.scrollToElement(titleEl);
+        await this.elementIsVisible(titleEl);
 
         await screenshotWithCircle(this.driver, `Скролл в '${title}'`, titleEl);
     }
 
     async clickButton(buttonName) {
         const buttonEl = await this.elementLocated(locators.button(buttonName));
-        await this.elementIsVisible(buttonEl);
 
         await screenshotWithCircle(this.driver, `Нажимаем по кнопке '${buttonName}'`, buttonEl);
         await buttonEl.click();
