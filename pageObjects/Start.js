@@ -22,6 +22,7 @@ class Start extends Base {
     }
 
     async clickButton(buttonName) {
+        await this.elementIsVisible(locators.button(buttonName));
         const buttonEl = await this.elementLocated(locators.button(buttonName));
 
         await screenshotWithCircle(this.driver, `Нажимаем по кнопке '${buttonName}'`, buttonEl);

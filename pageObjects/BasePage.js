@@ -24,6 +24,10 @@ class Base {
         await screenshotWithCircle(this.driver, `Страница ${pageUrl}`);
     }
 
+    async elementIsVisible(locator, timeout = this.timeout) {
+        return this.driver.wait(this.until.elementIsVisible(this._locatorObj(locator)), timeout);
+    }
+
     async elementLocated(locator, timeout = this.timeout) {
         return this.driver.wait(this.until.elementLocated(this._locatorObj(locator)), timeout);
     }

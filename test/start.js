@@ -3,15 +3,26 @@ const Pages = require('../pageObjects');
 require('../helpers/hooks');
 
 
-describe('Check lending ', () => {
-    describe('Open https://noveogroup.ru/', () => {
-        it(`and check header text 'Noveo' `, async () => {
+describe('Лендинг ', () => {
+    describe('https://noveogroup.ru/', () => {
+        it(`проверка текста в хидере 'Noveo' `, async () => {
             const startPage = new Pages.Start();
             await startPage.page();
 
             await startPage.checkHeader('Noveo');
         });
-        it(`and scroll to 'Горячие вакансии' and click to button 'Все вакансии' and check redirect (example assertion test)`, async () => {
+        it(`проверка фиксированность хидера 'Noveo' после срола`, async () => {
+            allure.description('Проверка зафиксированного хидера при скроле');
+
+            const startPage = new Pages.Start();
+            await startPage.page();
+
+            await startPage.scrollToTitle('Горячие вакансии');
+            await startPage.checkHeader('Noveo');
+        });
+        it(`скролл в 'Горячие вакансии' и клик по кнопке 'Все вакансии' и проверка редиректа`, async () => {
+            allure.description(`Проверка редиректа после нажатия на кнопку 'Все вакансии'`);
+
             const startPage = new Pages.Start();
             await startPage.page();
             await startPage.scrollToTitle('Горячие вакансии');
@@ -22,7 +33,9 @@ describe('Check lending ', () => {
             const vacanciesPage = new Pages.Vacancies();
             await vacanciesPage.checkTitle('Все вакансии2');
         });
-        it(`check vacancies list in page 'Все вакансии' `, async () => {
+        it(`проверка списка вакансий на странице 'Все вакансии' (Пример ассерта) `, async () => {
+            allure.description(`Проверка списка вакансий`);
+
             const vacanciesPage = new Pages.Vacancies();
             await vacanciesPage.page('https://job.noveogroup.ru/');
 
@@ -39,7 +52,7 @@ describe('Check lending ', () => {
                 'Разработчик C/C++ (embedded systems)',
                 'HR-manager',
                 'Преподаватель английского языка',
-                'Tестировщик ПО / QA engineer',
+                'Tестировщик автоматизатор / QA automation engineer',
             ]);
         });
     });
