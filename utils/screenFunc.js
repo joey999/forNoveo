@@ -1,5 +1,6 @@
-/* eslint-disable */
-const logger = require('./logger');
+// /* eslint-disable */
+import { logger } from './logger';
+// const logger = Logger;
 
 
 /**
@@ -14,13 +15,11 @@ async function screen_(name = 'забыл указать имя', browser) {
         await allure.createAttachment(`Screenshot: ${name}`, () => new Buffer.from(png, 'base64'), 'image/png')();
     });
 }
-
 /**
  * JS-скрипт обводки
  * @param {object} rect - object with size of the DOMElement
  */
 function cirleClickingObject(rect) {
-    console.log(rect.x, rect.y, rect.width, rect.height);
     const newDiv = document.createElement('div');
     newDiv.style.background = 'red';
     newDiv.style.position = 'absolute';
@@ -34,6 +33,7 @@ function cirleClickingObject(rect) {
     newDiv.style.zIndex = 10000;
     newDiv.className = 'circle-clicking-object';
     document.body.appendChild(newDiv);
+    console.log(`${rect.x}, ${rect.y}, ${rect.width}, ${rect.height}`);
 }
 
 /**
@@ -43,7 +43,6 @@ function deleteCircleClickingObjectFromDOM() {
     const el = document.querySelector('.circle-clicking-object');
     document.body.removeChild(el);
 }
-
 /**
  * Главная функция скриншота
  * @param {webdriver} browser - webdriver instance
@@ -51,12 +50,10 @@ function deleteCircleClickingObjectFromDOM() {
  * @param {webdriver} item - object to circle
  * @param {boolean} circle - circle turn on/off
  */
-async function screenshot(browser, text, item = null, circle = true) {
+export async function screenshotWithCircle(browser, text, item = null, circle = true) {
     logger.log(text);
     const rect = (circle && item) ? await item.getRect() : '';
     if (circle && item) await browser.executeScript(cirleClickingObject, rect);
     await screen_(text, browser);
     if (circle && item) await browser.executeScript(deleteCircleClickingObjectFromDOM);
 }
-
-module.exports = screenshot;

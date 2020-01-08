@@ -1,14 +1,13 @@
-const WebdriverSingleton = require('../helpers/driver');
-const { screenshotWithCircle, decoration } = require('../utils');
-const conf = require('../hostConfig');
+import WebdriverSingleton from '../helpers/driver';
+import { decorationMethod, screenshotWithCircle } from '../utils';
+import { conf } from '../hostConfig';
 
 
-class Base {
+export class BasePage {
     constructor() {
         const webdriverConstructor = WebdriverSingleton.instance;
 
         this.driver = webdriverConstructor.getDriver();
-        this.driver.manage().window().maximize();
 
         this.by = webdriverConstructor.By;
         this.until = webdriverConstructor.until;
@@ -25,10 +24,6 @@ class Base {
         await screenshotWithCircle(this.driver, `Страница ${pageUrl}`);
     }
 
-    async elementIsVisible(element, timeout = this.timeout) {
-        return this.driver.wait(this.until.elementIsVisible(element), timeout);
-    }
-
     async elementLocated(locator, timeout = this.timeout) {
         return this.driver.wait(this.until.elementLocated(this._locatorObj(locator)), timeout);
     }
@@ -40,6 +35,7 @@ class Base {
     async scrollToElement(element) {
         await this.driver.executeScript('arguments[0].scrollIntoView()', element);
         await this.driver.executeScript('window.scrollBy(0, -100)');
+        await this.driver.sleep(200);
     }
 
     async checkRedirect(expectUrl) {
@@ -53,7 +49,5 @@ const steps = {
     checkRedirect: (expectUrl) => `Проверка редиректа. Ожидаем: ${expectUrl}`,
 };
 
-decoration.decorationMethod(Base, 'page', steps);
-decoration.decorationMethod(Base, 'checkRedirect', steps);
-
-module.exports = Base;
+decorationMethod(BasePage, 'page', steps);
+decorationMethod(BasePage, 'checkRedirect', steps);

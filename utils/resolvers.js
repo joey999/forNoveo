@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-module.exports = async function arrayDeepResolver(arr) {
+export async function arrayDeepResolver(arr) {
     const treeResoled = [];
     for (const el of arr) {
         if (Array.isArray(el)) {
@@ -9,4 +9,4 @@ module.exports = async function arrayDeepResolver(arr) {
         }
     }
     return treeResoled;
-};
+}

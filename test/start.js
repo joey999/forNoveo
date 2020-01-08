@@ -1,7 +1,6 @@
-const { describe, it } = require('mocha');
-const Pages = require('../pageObjects');
-require('../helpers/hooks');
-
+import { describe, it } from 'mocha';
+import * as Pages from '../pageObjects';
+import '../helpers/hooks';
 
 describe('Лендинг ', () => {
     describe('https://noveogroup.ru/', () => {
@@ -33,7 +32,7 @@ describe('Лендинг ', () => {
             const vacanciesPage = new Pages.Vacancies();
             await vacanciesPage.checkTitle('Все вакансии');
         });
-        it(`проверка списка вакансий на странице 'Все вакансии' (Пример ассерта) `, async () => {
+        it(`проверка списка вакансий на странице 'Все вакансии' (Пример ассерта)`, async () => {
             allure.description(`Проверка списка вакансий`);
 
             const vacanciesPage = new Pages.Vacancies();

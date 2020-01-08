@@ -1,7 +1,6 @@
-const { expect } = require('chai');
-const Base = require('./BasePage');
-const { screenshotWithCircle, arrayDeepResolver, decoration, logger } = require('../utils');
-// const logger = Logger.instance;
+import { expect } from 'chai';
+import { BasePage } from './BasePage';
+import { screenshotWithCircle, arrayDeepResolver, decorationClass, logger } from '../utils';
 
 
 class locators {
@@ -14,7 +13,7 @@ class locators {
     }
 }
 
-class Vacancies extends Base {
+export class Vacancies extends BasePage {
     async checkVacancies(arrVacancies) {
         const elsVac = await this.elementsLocated(locators.vacancies);
         logger.log(`Количество вакансий на странице: '${elsVac.length}'; Ожидаем: '${arrVacancies.length}'`);
@@ -47,6 +46,4 @@ const steps = {
     checkTitle: (title) => `Проверка тайтла страницы. Ожидаем: '${title}'`,
 };
 
-decoration.decorationClass(Vacancies, steps);
-
-module.exports = Vacancies;
+decorationClass(Vacancies, steps);

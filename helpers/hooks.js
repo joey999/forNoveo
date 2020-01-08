@@ -1,7 +1,8 @@
-const { beforeEach, afterEach } = require('mocha');
-const { screenshotWithCircle, stepIncrementer, logger } = require('../utils');
-const Singleton = require('./driver');
-const conf = require('../hostConfig');
+import { beforeEach, afterEach } from 'mocha';
+import { screenshotWithCircle, logger, stepIncrementer } from '../utils';
+import Singleton from './driver';
+import { conf } from '../hostConfig';
+// const logger = Logger.instance;
 
 
 // eslint-disable-next-line prefer-arrow-callback

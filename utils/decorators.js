@@ -1,8 +1,8 @@
-const logger = require('./logger');
-const stepIncrementer = require('./stepIncrementer');
+import { logger } from './logger';
+import { stepIncrementer } from './stepIncrementer';
 
 
-module.exports = function step(target, name, descriptor, stepDescription) {
+export function step(target, name, descriptor, stepDescription) {
     const original = descriptor.value;
     if (typeof original === 'function') {
         // eslint-disable-next-line func-names,no-param-reassign
@@ -31,4 +31,4 @@ module.exports = function step(target, name, descriptor, stepDescription) {
         };
     }
     return descriptor;
-};
+}

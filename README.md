@@ -1,5 +1,5 @@
 # forNoveo
-Example of my test-framework code for Noveo group.
+Example of my test-framework in ES6 style code for Noveo group.
 
 ## Setup
 

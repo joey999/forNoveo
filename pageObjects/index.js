@@ -1,2 +1,2 @@
-exports.Start = require('./Start');
-exports.Vacancies = require('./Vacancies');
+export { Start } from './Start';
+export { Vacancies } from './Vacancies';

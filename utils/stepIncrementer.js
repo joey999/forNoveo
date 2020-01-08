@@ -13,4 +13,4 @@ class StepIncrementer {
     }
 }
 
-module.exports = new StepIncrementer();
+export const stepIncrementer = new StepIncrementer();

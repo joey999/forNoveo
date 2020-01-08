@@ -1,4 +1,4 @@
-module.exports = {
+export const conf = {
     host: 'https://noveogroup.ru',
     proxy: {
         http: process.env.http_proxy,

@@ -14,9 +14,9 @@ class Logger {
 
     log(message) {
         const timestamp = new Date().toISOString();
-        this.logs.push({ message, timestamp });
+        this.logs.push({message, timestamp});
         console.log(`${timestamp} - ${message}`);
     }
 }
 
-module.exports = new Logger();
+export const logger = new Logger();

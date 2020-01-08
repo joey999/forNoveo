@@ -1,6 +1,5 @@
-const webdriver = require('selenium-webdriver');
-const { By, until } = require('selenium-webdriver');
-const conf = require('../hostConfig');
+import { By, until, Builder } from 'selenium-webdriver';
+import { conf } from '../hostConfig';
 
 
 // eslint-disable-next-line symbol-description
@@ -8,7 +7,7 @@ const singleton = Symbol();
 // eslint-disable-next-line symbol-description
 const singletonEnforcer = Symbol();
 
-class WebdriverSingleton {
+export default class WebdriverSingleton {
     constructor(enforcer) {
         if (enforcer !== singletonEnforcer) {
             return new Error('Instantiation failed: use Singleton.getInstance() instead of new.');
@@ -25,7 +24,7 @@ class WebdriverSingleton {
     }
 
     createDriver() {
-        this.driver = new webdriver.Builder()
+        this.driver = new Builder()
             .usingServer(conf.selenium)
             .withCapabilities({ browserName: conf.browser })
             .build();
@@ -40,6 +39,3 @@ class WebdriverSingleton {
         return this.driver.quit();
     }
 }
-
-
-module.exports = WebdriverSingleton;
