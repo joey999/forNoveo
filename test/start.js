@@ -31,7 +31,7 @@ describe('Лендинг ', () => {
             await startPage.checkRedirect('https://job.noveogroup.ru/');
 
             const vacanciesPage = new Pages.Vacancies();
-            await vacanciesPage.checkTitle('Все вакансии2');
+            await vacanciesPage.checkTitle('Все вакансии');
         });
         it(`проверка списка вакансий на странице 'Все вакансии' (Пример ассерта) `, async () => {
             allure.description(`Проверка списка вакансий`);
