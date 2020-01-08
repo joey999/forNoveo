@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const {screenshotWithCircle, step, decoration} = require('../utils');
+const { expect } = require('chai');
+const { screenshotWithCircle, decoration } = require('../utils');
 const Base = require('./BasePage');
 
 
@@ -14,7 +14,6 @@ class locators {
 }
 
 class Start extends Base {
-
     async scrollToTitle(title) {
         const titleEl = await this.elementLocated(locators.title(title));
         await this.scrollToElement(titleEl);
@@ -40,15 +39,9 @@ class Start extends Base {
 }
 
 const steps = {
-    clickButton: (button) => {
-        return `Клик по кнопке '${button}'`
-    },
-    scrollToTitle: (title) => {
-        return `Скролл к тайтлу '${title}'`
-    },
-    checkHeader: (header) => {
-        return `Проверка хидера. Ожидаем '${header}'`
-    }
+    clickButton: (button) => `Клик по кнопке '${button}'`,
+    scrollToTitle: (title) => `Скролл к тайтлу '${title}'`,
+    checkHeader: (header) => `Проверка хидера. Ожидаем '${header}'`,
 };
 
 decoration.decorationClass(Start, steps);

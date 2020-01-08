@@ -39,17 +39,13 @@ class Base {
 
     async checkRedirect(expectUrl) {
         await this.driver.wait(this.until.urlIs(expectUrl), this.timeout);
-        await screenshotWithCircle(this.driver, `Проверка редиректа на страницу ${expectUrl}`)
+        await screenshotWithCircle(this.driver, `Проверка редиректа на страницу ${expectUrl}`);
     }
 }
 
 const steps = {
-    page: (url) => {
-        return `Страница ${url === undefined ? conf.host : url}`
-    },
-    checkRedirect: (expectUrl) => {
-        return `Проверка редиректа. Ожидаем: ${expectUrl}`
-    }
+    page: (url) => `Страница ${url === undefined ? conf.host : url}`,
+    checkRedirect: (expectUrl) => `Проверка редиректа. Ожидаем: ${expectUrl}`,
 };
 
 decoration.decorationMethod(Base, 'page', steps);

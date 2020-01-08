@@ -11,7 +11,7 @@ describe('Check lending ', () => {
 
             await startPage.checkHeader('Noveo');
         });
-        it(`and scroll to 'Горячие вакансии' and click to button 'Все вакансии' and check redirect`, async () => {
+        it(`and scroll to 'Горячие вакансии' and click to button 'Все вакансии' and check redirect (example assertion test)`, async () => {
             const startPage = new Pages.Start();
             await startPage.page();
             await startPage.scrollToTitle('Горячие вакансии');

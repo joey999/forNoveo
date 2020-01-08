@@ -2,13 +2,13 @@
   "name": "fornoveo",
   "version": "1.0.0",
   "description": "Test project for Noveo",
-  "main": "utils/logger.js",
+  "main": "utils/index.js",
   "scripts": {
     "postinstall": "selenium-standalone install",
     "pretest": "rm -rf allure-results",
     "test": "npm-run-all -r -p test:*",
     "test:selenium": "selenium-standalone start",
-    "test:mocha": "sleep 1 && multi='spec=- mocha-allure-reporter=-' mocha test/start.js --opts mocha.opts",
+    "test:mocha": "sleep 1 && multi='spec=- mocha-allure-reporter=-' mocha test/start.js --config .mocharc.yml",
     "posttest": "allure generate allure-results --clean -o allure-report && allure open allure-report",
     "runner": "multi='spec=- mocha-allure-reporter=-' node runner.js",
     "report-open": "allure open allure-report"

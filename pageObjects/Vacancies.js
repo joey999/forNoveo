@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const Base = require('./BasePage');
-const { logger, screenshotWithCircle, arrayDeepResolver, decoration} = require('../utils');
+const { screenshotWithCircle, arrayDeepResolver, decoration, logger } = require('../utils');
+// const logger = Logger.instance;
 
 
 class locators {
@@ -42,12 +43,8 @@ class Vacancies extends Base {
     }
 }
 const steps = {
-    checkVacancies: () => {
-        return `Проверка списка вакансий`
-    },
-    checkTitle: (title) => {
-        return `Проверка тайтла страницы. Ожидаем: '${title}'`
-    }
+    checkVacancies: () => `Проверка списка вакансий`,
+    checkTitle: (title) => `Проверка тайтла страницы. Ожидаем: '${title}'`,
 };
 
 decoration.decorationClass(Vacancies, steps);

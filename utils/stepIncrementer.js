@@ -1,14 +1,16 @@
-class stepIncrementer {
+class StepIncrementer {
     constructor() {
-        this.step = 0
+        this.step = 0;
     }
+
     incrementStep() {
         this.step += 1;
         return this.step;
     }
+
     counterReset() {
         this.step = 0;
     }
 }
 
-module.exports = new stepIncrementer();
+module.exports = new StepIncrementer();

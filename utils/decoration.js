@@ -1,7 +1,8 @@
-const {step} = require('.');
+const { step } = require('./index');
 
 exports.decorationClass = function decorationClass(cls, steps) {
-    Object.getOwnPropertyNames(cls.prototype).map(prop => {
+    // eslint-disable-next-line array-callback-return
+    Object.getOwnPropertyNames(cls.prototype).map((prop) => {
         if (!['constructor', '_locators'].includes(prop)) {
             let descriptor = Object.getOwnPropertyDescriptor(cls.prototype, prop);
             descriptor = step(cls.prototype, prop, descriptor, steps[prop]);

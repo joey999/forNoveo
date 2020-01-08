@@ -15,6 +15,7 @@ globals:
 rules:
   func-style: ["error", "declaration"]
   func-names: ["error", "as-needed"]
+  object-curly-newline: ["error", { "multiline": true }]
   quotes: ["error", "single", { "allowTemplateLiterals": true }]
   no-restricted-syntax: "off"
   no-confusing-arrow: ["error", {"allowParens": true}]

@@ -5,3 +5,4 @@ exports.logger = require('./logger');
 exports.arrayDeepResolver = require('./resolvers');
 exports.step = require('./decorators');
 exports.decoration = require('./decoration');
+exports.stepIncrementer = require('./stepIncrementer');

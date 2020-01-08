@@ -3,7 +3,7 @@ const logger = require('./logger');
 
 
 /**
- * Функция создает step в allure
+ * Функция приаттачивает скриншот в степе allure
  * @param {string} name
  * @param {webdriver} browser
  * @returns {Promise<void>}
